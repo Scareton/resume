@@ -3,6 +3,22 @@
     <v-main>
       <home />
     </v-main>
+
+    <v-speed-dial v-model="fab" open-on-hover left bottom fixed>
+      <template v-slot:activator>
+        <v-btn v-model="fab" dark fab>
+          <v-icon v-if="fab">mdi-close</v-icon>
+          <v-icon v-else>mdi-cog</v-icon>
+        </v-btn>
+      </template>
+
+      <v-btn fab dark small v-if="$vuetify.theme.dark" @click="$vuetify.theme.dark = false">
+        <v-icon>mdi-theme-light-dark</v-icon>
+      </v-btn>
+      <v-btn fab dark small v-else @click="$vuetify.theme.dark = true">
+        <v-icon>mdi-theme-light-dark</v-icon>
+      </v-btn>
+    </v-speed-dial>
   </v-app>
 </template>
 
@@ -12,7 +28,9 @@ export default {
   components: {
     Home: () => import("./views/Home")
   },
-  data: () => ({})
+  data: () => ({
+    fab: false
+  })
 };
 </script>
 

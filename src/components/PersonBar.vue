@@ -51,7 +51,7 @@
           </v-list-item-icon>
 
           <v-list-item-content>
-            <v-list-item-title>GitGub</v-list-item-title>
+            <v-list-item-title>GitHub</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 

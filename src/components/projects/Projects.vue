@@ -111,6 +111,6 @@ export default {
     -4px 4px #4caf50, -5px 5px #4caf50, -6px 6px #4caf50, -7px 7px #4caf50;
   -webkit-transform: translate3d(6px, -6px, 0);
   transform: translate3d(6px, -6px, 0);
-  z-index: 99;
+  z-index: 1;
 }
 </style>
