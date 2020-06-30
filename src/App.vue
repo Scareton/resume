@@ -12,10 +12,10 @@
         </v-btn>
       </template>
 
-      <v-btn fab dark small v-if="$vuetify.theme.dark" @click="$vuetify.theme.dark = false">
+      <v-btn fab dark small v-if="$vuetify.theme.dark" @click="toggleDarkTheme(false)">
         <v-icon>mdi-theme-light-dark</v-icon>
       </v-btn>
-      <v-btn fab dark small v-else @click="$vuetify.theme.dark = true">
+      <v-btn fab dark small v-else @click="toggleDarkTheme(true)">
         <v-icon>mdi-theme-light-dark</v-icon>
       </v-btn>
     </v-speed-dial>
@@ -30,7 +30,18 @@ export default {
   },
   data: () => ({
     fab: false
-  })
+  }),
+  methods: {
+    toggleDarkTheme(status) {
+      localStorage.setItem('darkTheme', status);
+      this.$vuetify.theme.dark = status;
+      console.log(status)
+    }
+  },
+  created() {
+    let status = (localStorage.getItem('darkTheme') == "true");
+    this.$vuetify.theme.dark = status
+  }
 };
 </script>
 
