@@ -1,10 +1,10 @@
 <template>
-  <v-card class="pa-4">
+  <v-card class="pa-4" outlined>
     <div class="body-2">{{step.content}}</div>
-    <v-list class="mt-2" v-if="step.projects.length > 0">
+    <v-list class="mt-2" color="" v-if="step.projects.length > 0">
       <v-subheader>Ключевые проекты</v-subheader>
       <v-list-item v-for="(project, index) in step.projects" :key="index">
-        <v-list-item-avatar>
+        <v-list-item-avatar style="border: 1px solid rgba(0, 0, 0, 0.1)">
           <v-img :src="project.image"></v-img>
         </v-list-item-avatar>
 

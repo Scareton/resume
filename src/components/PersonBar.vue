@@ -1,7 +1,7 @@
 <template>
   <div class="person-bar mt-8">
-    <v-card class="elevation-0">
-      <v-img src="/images/photo2.jpg" aspect-ratio="1.6" position="50% 35%" />
+    <v-card class="">
+      <v-img src="/images/photo1.jpg" aspect-ratio="1.6" position="50% 25%" />
 
       <v-list dark two-line>
         <v-list-item href="tel:+79377005739">
@@ -31,7 +31,7 @@
         </v-list-item>
       </v-list>
     </v-card>
-    <v-card dark class="mt-4 elevation-0">
+    <v-card dark class="mt-4">
       <v-card-title>Социальные сети</v-card-title>
 
       <v-list dark>
@@ -42,6 +42,16 @@
 
           <v-list-item-content>
             <v-list-item-title>Вконтакте</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item href="https://github.com/Scareton" target="_blank">
+          <v-list-item-icon>
+            <v-icon>mdi-github</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title>GitGub</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 

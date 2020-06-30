@@ -20,4 +20,8 @@ export default {
 .theme--dark.v-stepper .v-stepper__step--active .v-stepper__label {
   text-shadow: unset !important;
 }
+.theme--light.v-stepper .v-stepper__step--active .v-stepper__label {
+  text-shadow: unset !important;
+  color: #000 !important;
+}
 </style>

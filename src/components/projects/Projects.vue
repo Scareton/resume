@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <h3 class="pa-4">Галерея проектов</h3>
-    <v-card color="grey darken-3">
+    <v-card dark color="grey darken-3">
       <v-row class="projects-row ma-0">
         <v-col v-for="(project, index) in projects" :key="index" class="col-4 pa-0">
           <v-img aspect-ratio="1" :src="project.image" style="overflow:hidden;height:100%;" gradient="to top right, rgba(84, 110, 122, .30), rgba(38, 50, 56, .70)">
@@ -56,7 +56,7 @@ export default {
           }
         ],
         description: "",
-        image: "/images/project1.jpg"
+        image: "/images/project3.jpg"
       },
       {
         name: "ЭИОС для учебного заведения",
