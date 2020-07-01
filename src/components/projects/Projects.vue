@@ -3,10 +3,10 @@
     <h3 class="pa-4">Галерея проектов</h3>
     <v-card dark color="grey darken-3">
       <v-row class="projects-row ma-0">
-        <v-col v-for="(project, index) in projects" :key="index" class="col-4 pa-0">
+        <v-col v-for="(project, index) in projects" :key="index" class="pa-0">
           <v-img aspect-ratio="1" :src="project.image" style="overflow:hidden;height:100%;" gradient="to top right, rgba(84, 110, 122, .30), rgba(38, 50, 56, .70)">
-            <div class="d-flex align-center justify-center pa-8" style="height:100%;width:100%;max-height:100%;">
-              <div class="primary px-2 py-1" style="border-radius:5px;max-height:100%;">
+            <div class="d-flex align-center justify-center pa-8 project-card" style="height:100%;width:100%;max-width:100%;max-height:100%;">
+              <div class="primary px-2 py-1" style="border-radius:5px;max-height:100%;max-width:100%;">
                 <v-card class="pa-4 mt-1" color="green darken-2 elevation-0">{{project.name}}</v-card>
 
                 <v-list color="green darken-2" dense class="my-1" style="border-radius:4px;">
@@ -73,7 +73,15 @@ export default {
             name: "Сервер"
           }
         ],
-        tags: ["Backend", "Frontend", "Vue.js", "Vuetify", "REST", "Node.js", "MongoDB"],
+        tags: [
+          "Backend",
+          "Frontend",
+          "Vue.js",
+          "Vuetify",
+          "REST",
+          "Node.js",
+          "MongoDB"
+        ],
         image: "/images/project3.png"
       },
       {
@@ -101,7 +109,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .projects-row .v-image {
   transition: all 0.2s ease-in-out;
   cursor: pointer;
@@ -112,5 +120,41 @@ export default {
   -webkit-transform: translate3d(6px, -6px, 0);
   transform: translate3d(6px, -6px, 0);
   z-index: 1;
+}
+
+.projects-row > .col {
+  flex: 0 0 33.3333333333%;
+  max-width: 33.3333333333%;
+}
+
+@media (max-width: 1640px) {
+  .projects-row > .col {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+@media (min-width: 660px) and (max-width: 1263px) {
+  .projects-row > .col {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+@media (max-width: 599px) {
+  .projects-row > .col {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .projects-row .v-image {
+    transition: none;
+  }
+  .projects-row .v-image:hover {
+    box-shadow: unset;
+    transform: unset;
+  }
+}
+@media (max-width: 424px) {
+  .project-card {
+    padding: 16px !important;
+  }
 }
 </style>

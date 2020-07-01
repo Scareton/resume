@@ -33,14 +33,14 @@ export default {
   }),
   methods: {
     toggleDarkTheme(status) {
-      localStorage.setItem('darkTheme', status);
+      localStorage.setItem("darkTheme", status);
       this.$vuetify.theme.dark = status;
-      console.log(status)
+      console.log(status);
     }
   },
   created() {
-    let status = (localStorage.getItem('darkTheme') == "true");
-    this.$vuetify.theme.dark = status
+    let status = localStorage.getItem("darkTheme") == "true";
+    this.$vuetify.theme.dark = status;
   }
 };
 </script>
@@ -52,5 +52,15 @@ export default {
 .theme--light.v-stepper .v-stepper__step--active .v-stepper__label {
   text-shadow: unset !important;
   color: #000 !important;
+}
+
+@media (max-width: 599px) {
+  .v-application--is-ltr .v-stepper--vertical .v-stepper__content {
+    margin: 0 !important;
+    padding: 0 16px !important;
+  }
+  .v-application--is-ltr .theme--dark.v-stepper--vertical .v-stepper__content:not(:last-child) {
+    border-left: unset !important;
+  }
 }
 </style>

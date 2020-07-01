@@ -1,12 +1,15 @@
 <template>
-  <v-card class="primary">
-    <h3 class="white--text pa-4">Опыт работы</h3>
+  <v-card>
+    <h3 class="white--text pa-4 primary">Опыт работы</h3>
 
     <v-stepper class="elevation-0" vertical non-linear v-model="selected">
       <template v-for="(step, index) in steps">
         <v-stepper-step :key="`step${index + 1}`" :step="index+1" @click="selected = index + 1" color="primary">
           <div class="font-weight-bold">
             <span class="primary--text mr-2">{{step.years}}</span>
+            <v-avatar class="mr-2 step-image" v-if="step.image">
+              <v-img :src="step.image" contain />
+            </v-avatar>
             <span>{{step.name}}</span>
           </div>
         </v-stepper-step>
@@ -26,31 +29,36 @@ export default {
   data: () => ({
     steps: [
       {
+        name: "Studio Cube",
+        image: "/images/cube.png",
+        years: "",
+        projects: [
+
+        ],
+        content: "Комплексные интернет-решения для вас и вашего бизнеса"
+      },
+      {
         name: "See Every Event",
-        description: "",
-        years: "2016-2018",
+        image: "/images/seeWhite.png",
+        years: "2016-2020",
         projects: [
           {
             name: "Детектирование дыма",
             description: "Разработка системы детектирования очагов возгорания",
             tags: ["Прикладное ПО", "C#", "Компьютерное зрение", "EmguCV"],
-            image: "/images/seeWhite.png"
-          }
-        ],
-        content:
-          "Команда, созданная амбициозными студентами Камышинского технологического института."
-      },
-      {
-        name: "У олегыча",
-        description: "",
-        years: "2019-2020",
-        projects: [
+            image: ""
+          },
+          {
+            name: "Разработка CRM системы для риелторов",
+            description: "Выгрузка объявлений с площадок. Автоматизация рутинной работы с клиентом.",
+            tags: ["Frontend", "Backend", "Vue", "Vuetify", "Vue Material", "Node", "Firebase"]
+          },
           {
             name: "Объединение полигонов",
             description:
               "Объединение полигонов в мультиполигон со стиранием границ. Объём данных до 600мб",
-            tags: ["Backend", "Node.js", "MongoDB", "QGIS"],
-            link: "#",
+            tags: ["Backend", "Node", "MongoDB", "QGIS"],
+            link: "",
             image:
               "http://softrare.ru/sites/default/files/qgis-rabochaya-oblast.png"
           },
@@ -59,13 +67,21 @@ export default {
             description:
               "Вывод, фильтрация, обработка большого количества географических объектов",
             tags: ["Frontend", "React", "REST", "leaflet"],
-            link: "#",
+            link: "",
             image:
               "http://softrare.ru/sites/default/files/qgis-rabochaya-oblast.png"
+          },
+          {
+            name: "Поддержка и доработка веб-сайта",
+            description:
+              "Поддержка и доработка веб-сайта на CMS Modx REVO с высокой посещаемостью",
+            tags: ["Frontend", "CMS", "Modx REVO"],
+            link: "",
+            image: ""
           }
         ],
         content:
-          "Не следует, однако забывать, что рамки и место обучения кадров требуют определения и уточнения соответствующий условий активизации. Таким образом постоянный количественный рост и сфера нашей активности способствует подготовки и реализации системы обучения кадров, соответствует насущным потребностям. Равным образом дальнейшее развитие различных форм деятельности требуют определения и уточнения модели развития. Идейные соображения высшего порядка, а также начало повседневной работы по формированию позиции обеспечивает широкому кругу (специалистов) участие в формировании существенных финансовых и административных условий."
+          "Команда, созданная амбициозными студентами Камышинского технологического института.</br>В 2018 году <a target='_blank' href='https://vk.com/wall-63046181_2875'>выиграли грант</a> в размере 500 тысяч рублей на развитие своего проекта в конкурсе «УМНИК»"
       }
     ],
     selected: null
@@ -80,5 +96,10 @@ export default {
 <style>
 .v-stepper .v-stepper__step {
   cursor: pointer;
+}
+@media (max-width: 424px) {
+  .step-image {
+    display: none;
+  }
 }
 </style>

@@ -1,77 +1,106 @@
 <template>
   <div class="person-bar mt-8">
-    <v-card class="">
-      <v-img src="/images/photo1.jpg" aspect-ratio="1.6" position="50% 25%" />
+    <template v-if="!$vuetify.breakpoint.smAndDown">
+      <v-card>
+        <v-img src="/images/photo1.jpg" aspect-ratio="1.6" position="50% 25%" />
 
-      <v-list dark two-line>
-        <v-list-item href="tel:+79377005739">
-          <v-list-item-icon>
-            <v-icon>mdi-phone</v-icon>
-          </v-list-item-icon>
+        <v-list dark two-line>
+          <v-list-item v-for="(link, index) in contacts" :key="index" :href="link.href">
+            <v-list-item-icon>
+              <v-icon>{{link.icon}}</v-icon>
+            </v-list-item-icon>
 
-          <v-list-item-content>
-            <v-list-item-title>+7 937 700 57 39</v-list-item-title>
-            <v-list-item-subtitle>Мобильный</v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
+            <v-list-item-content>
+              <v-list-item-title>{{link.title}}</v-list-item-title>
+              <v-list-item-subtitle>{{link.subtitle}}</v-list-item-subtitle>
+            </v-list-item-content>
 
-        <v-list-item href="mailto:voron4288@gmail.com">
-          <v-list-item-icon>
-            <v-icon>mdi-email</v-icon>
-          </v-list-item-icon>
+            <v-list-item-icon v-if="link.append">
+              <v-icon>{{link.append}}</v-icon>
+            </v-list-item-icon>
+          </v-list-item>
+        </v-list>
+      </v-card>
+      <v-card dark class="mt-4">
+        <v-card-title>Социальные сети</v-card-title>
 
-          <v-list-item-content>
-            <v-list-item-title>voron4288@gmail.com</v-list-item-title>
-            <v-list-item-subtitle>E-mail</v-list-item-subtitle>
-          </v-list-item-content>
+        <v-list dark>
+          <v-list-item v-for="(link, index) in socials" :key="index" :href="link.href" target="_blank">
+            <v-list-item-icon>
+              <v-icon>{{link.icon}}</v-icon>
+            </v-list-item-icon>
 
-          <v-list-item-icon>
-            <v-icon>mdi-message-text</v-icon>
-          </v-list-item-icon>
-        </v-list-item>
-      </v-list>
-    </v-card>
-    <v-card dark class="mt-4">
-      <v-card-title>Социальные сети</v-card-title>
-
-      <v-list dark>
-        <v-list-item href="https://vk.com/id149543765" target="_blank">
-          <v-list-item-icon>
-            <v-icon>mdi-vk</v-icon>
-          </v-list-item-icon>
-
-          <v-list-item-content>
-            <v-list-item-title>Вконтакте</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-
-        <v-list-item href="https://github.com/Scareton" target="_blank">
-          <v-list-item-icon>
-            <v-icon>mdi-github</v-icon>
-          </v-list-item-icon>
-
-          <v-list-item-content>
-            <v-list-item-title>GitHub</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-
-        <v-list-item href="https://career.habr.com/sundear" target="_blank">
-          <v-list-item-icon>
-            <!-- <v-icon>mdi-vk</v-icon> -->
-          </v-list-item-icon>
-
-          <v-list-item-content>
-            <v-list-item-title>Хабр Карьера</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-
-      </v-list>
-    </v-card>
+            <v-list-item-content>
+              <v-list-item-title>{{link.title}}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+      </v-card>
+    </template>
+    <template v-else>
+      <div class="header-line d-flex grey darken-4 white--text px-4 justify-space-between">
+        <div class="d-flex flex-column justify-center ma-2" style="flex:1;">
+          <h1>Александр Воронков</h1>
+          <h2>Веб-разработчик</h2>
+        </div>
+        <div class="toplinks d-flex align-center" style="flex:1;">
+          <div class="d-flex flex-wrap">
+            <div v-for="(link, index) in contacts" :key="`c${index}`" class="ma-2">
+              <v-btn depressed small>
+                <v-icon class="mr-2" v-if="link.icon">{{link.icon}}</v-icon>
+                <span class="toplink-text">{{link.title}}</span>
+              </v-btn>
+            </div>
+            <div v-for="(link, index) in socials" :key="`s${index}`" class="ma-2">
+              <v-btn depressed small>
+                <v-icon class="mr-2" v-if="link.icon">{{link.icon}}</v-icon>
+                <span class="toplink-text">{{link.title}}</span>
+              </v-btn>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data: () => ({
+    contacts: [
+      {
+        href: "tel:+79377005739",
+        icon: "mdi-phone",
+        title: "+7 937 700 57 39",
+        subtitle: "Мобильный"
+      },
+      {
+        href: "mailto:voron4288@gmail.com",
+        icon: "mdi-email",
+        title: "voron4288@gmail.com",
+        subtitle: "E-mail",
+        append: "mdi-message-text"
+      }
+    ],
+    socials: [
+      {
+        href: "https://vk.com/id149543765",
+        icon: "mdi-vk",
+        title: "Вконтакте"
+      },
+      {
+        href: "https://github.com/Scareton",
+        icon: "mdi-github",
+        title: "Гитхаб"
+      },
+      {
+        href: "https://career.habr.com/sundear",
+        icon: "",
+        title: "Хабр Карьера"
+      }
+    ]
+  })
+};
 </script>
 
 <style scoped>
@@ -79,5 +108,36 @@ export default {};
   min-width: 375px;
   position: absolute;
   left: 16px;
+}
+@media (min-width: 960px) and (max-width: 1263px) {
+  .person-bar {
+    min-width: 240px;
+    max-width: 240px;
+  }
+}
+@media (max-width: 959px) {
+  .person-bar {
+    min-width: unset;
+    position: inherit;
+    left: 0;
+    margin-top: 0 !important;
+  }
+}
+@media (max-width: 870px) {
+  .header-line {
+    flex-direction: column;
+  }
+  h1 {
+    font-size: 1.4em;
+  }
+  h2 {
+    font-size: 1em;
+  }
+  .toplinks {
+    margin-top: 4px;
+  }
+  .v-icon + .toplink-text {
+    display: none;
+  }
 }
 </style>

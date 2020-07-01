@@ -1,6 +1,6 @@
 <template>
-  <v-card class="primary">
-    <h3 class="pa-4 white--text">Образование</h3>
+  <v-card>
+    <h3 class="pa-4 white--text primary">Образование</h3>
 
     <v-stepper class="elevation-0" vertical non-linear v-model="selected">
       <template v-for="(step, index) in steps">
@@ -10,7 +10,7 @@
           <div class="mt-1 caption" v-html="step.years"></div>
         </v-stepper-step>
         <v-stepper-content :key="`content${index + 1}`" :step="index + 1">
-          <div class="body-2" v-html="step.content"></div>
+          <v-card outlined class="pa-4"><div class="body-2" v-html="step.content"></div></v-card>
         </v-stepper-content>
       </template>
     </v-stepper>

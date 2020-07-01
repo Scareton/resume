@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <person-bar/>
-    <person-data/>
+    <person-bar />
+    <person-data />
   </div>
 </template>
 
