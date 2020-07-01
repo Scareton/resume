@@ -7,7 +7,7 @@
         <v-stepper-step :key="`step${index + 1}`" :step="index+1" @click="selected = index + 1" color="primary">
           <div class="font-weight-bold">
             <span class="primary--text mr-2">{{step.years}}</span>
-            <v-avatar class="mr-2 step-image" v-if="step.image">
+            <v-avatar class="mr-2 step-image" color="#fff" v-if="step.image">
               <v-img :src="step.image" contain />
             </v-avatar>
             <span>{{step.name}}</span>
