@@ -5,8 +5,8 @@
     <v-stepper class="elevation-0 workStepper" vertical non-linear v-model="selected">
       <template v-for="(step, index) in steps">
         <v-stepper-step :key="`step${index + 1}`" :step="index+1" @click="selected = index + 1" color="primary">
-          <div class="font-weight-bold">
-            <span class="primary--text mr-2">{{step.years}}</span>
+          <div class="font-weight-bold d-flex align-center pl-2">
+            <span class="primary--text mr-2" style="width: 90px;">{{step.years}}<br/>{{step.yearsMore}}</span>
             <v-avatar class="mr-2 step-image" color="#fff" v-if="step.image">
               <v-img :src="step.image" contain />
             </v-avatar>
@@ -31,20 +31,28 @@ export default {
       {
         name: "Studio Cube",
         image: "/images/cube.png",
-        years: "",
-        projects: [],
-        content: "Комплексные интернет-решения для вас и вашего бизнеса"
+        years: "2019",
+        yearsMore: "6 месяцев",
+        projects: [
+          {
+            name: "Разработка веб-сайтов с использованием CMS Modx",
+            description: "Разработка и поддержка веб-сайтов",
+            images: ["/images/image--000.jpg", "/images/rus_1.png"]
+          }
+        ],
+        content: "<a class='font-weight-bold' href='https://studio-cube.pro/'>studio-cube.pro</a><br/>Комплексные интернет-решения для вас и вашего бизнеса"
       },
       {
         name: "See Every Event",
         image: "/images/seeWhite.png",
-        years: "2016-2020",
+        years: "2017-2020",
         projects: [
           {
             name: "Детектирование дыма",
             description: "Разработка системы детектирования очагов возгорания",
             tags: ["Прикладное ПО", "C#", "Компьютерное зрение", "EmguCV"],
-            image: ""
+            image: "",
+            images: []
           },
           {
             name: "Разработка CRM системы для риелторов",
@@ -58,7 +66,8 @@ export default {
               "Vue Material",
               "Node",
               "Firebase"
-            ]
+            ],
+            images: ["images/i1.jpg","images/i2.jpg","images/i3.jpg","images/i4.jpg"]
           },
           {
             name: "Объединение полигонов",
@@ -79,9 +88,9 @@ export default {
               "http://softrare.ru/sites/default/files/qgis-rabochaya-oblast.png"
           },
           {
-            name: "Поддержка и доработка веб-сайта",
+            name: "Поддержка и доработка веб-сайтов",
             description:
-              "Поддержка и доработка веб-сайта на CMS Modx REVO с высокой посещаемостью",
+              "Поддержка и доработка веб-сайтов на CMS Modx REVO с высокой посещаемостью",
             tags: ["Frontend", "CMS", "Modx REVO"],
             link: "",
             image: ""

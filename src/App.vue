@@ -54,6 +54,9 @@ export default {
   text-shadow: unset !important;
   color: #000 !important;
 }
+.swiper-pagination-bullet-active {
+  background: var(--v-primary-base) !important;
+}
 
 @media (max-width: 599px) {
   .v-stepper--vertical .v-stepper__step {
