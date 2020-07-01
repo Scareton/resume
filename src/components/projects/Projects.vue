@@ -46,14 +46,7 @@ export default {
           "JQuery"
         ],
         links: [
-          {
-            href: "https://github.com/Scareton/zone-maps",
-            icon: "github"
-          },
-          {
-            href: "https://github.com/Scareton/zone-maps",
-            icon: "github"
-          }
+          
         ],
         description: "",
         image: "/images/project3.jpg"

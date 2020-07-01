@@ -6,7 +6,11 @@
       <template v-for="(step, index) in steps">
         <v-stepper-step :key="`step${index + 1}`" :step="index+1" @click="selected = index + 1" color="primary">
           <div class="font-weight-bold d-flex align-center pl-2">
-            <span class="primary--text mr-2" style="width: 90px;">{{step.years}}<br/>{{step.yearsMore}}</span>
+            <span class="primary--text mr-2" style="width: 90px;">
+              {{step.years}}
+              <br />
+              {{step.yearsMore}}
+            </span>
             <v-avatar class="mr-2 step-image" color="#fff" v-if="step.image">
               <v-img :src="step.image" contain />
             </v-avatar>
@@ -18,6 +22,10 @@
         </v-stepper-content>
       </template>
     </v-stepper>
+
+    <v-dialog v-model="imageDialog" width="unset">
+      <img :src="imageDialogData" v-if="imageDialogData" style="vertical-align:bottom;" />
+    </v-dialog>
   </v-card>
 </template>
 
@@ -40,7 +48,8 @@ export default {
             images: ["/images/image--000.jpg", "/images/rus_1.png"]
           }
         ],
-        content: "<a class='font-weight-bold' href='https://studio-cube.pro/'>studio-cube.pro</a><br/>Комплексные интернет-решения для вас и вашего бизнеса"
+        content:
+          "<a class='font-weight-bold' href='https://studio-cube.pro/'>studio-cube.pro</a><br/>Комплексные интернет-решения для вас и вашего бизнеса"
       },
       {
         name: "See Every Event",
@@ -49,15 +58,26 @@ export default {
         projects: [
           {
             name: "Детектирование дыма",
-            description: "Разработка системы детектирования очагов возгорания",
+            description:
+              "Разработка системы детектирования очагов возгорания с использованием технологий компьютерного зрения.",
             tags: ["Прикладное ПО", "C#", "Компьютерное зрение", "EmguCV"],
             image: "",
             images: []
           },
           {
             name: "Разработка CRM системы для риелторов",
-            description:
-              "Выгрузка объявлений с площадок. Автоматизация рутинной работы с клиентом.",
+            description: `
+            <p>CRM позволяет автоматизировать рутинную работу, тем самым повышая эффективность каждого сотрудника компании.</p>
+            В особенности системы входит:
+            <ul>
+              <li>Выгрузка объявлений с одной или нескольких площадок (Яндекс, Циан, Авито т.д.).</li>
+              <li>Приведение объявлений с разных площадок к общему формату.</li>
+              <li>Определение доступа для сотрудников по по статусу, событию, адресу, цене, количеству комнат и другим характеристикам объявления.</li>
+            </ul>
+            <p></p>
+            <p>Система предоставляет расширенный интерфейс общения с клиентами в виде веб-страницы с минималистичным и интуитивным дизайном.<br/>
+            Веб-приложение не требует установки, при этом все важные данные компании и клиентов остаются защищены.</p>
+            `,
             tags: [
               "Frontend",
               "Backend",
@@ -67,7 +87,12 @@ export default {
               "Node",
               "Firebase"
             ],
-            images: ["images/i1.jpg","images/i2.jpg","images/i3.jpg","images/i4.jpg"]
+            images: [
+              "images/i1.jpg",
+              "images/i2.jpg",
+              "images/i3.jpg",
+              "images/i4.jpg"
+            ]
           },
           {
             name: "Объединение полигонов",
@@ -102,6 +127,19 @@ export default {
     ],
     selected: null
   }),
+  computed: {
+    imageDialog: {
+      get() {
+        return this.$store.state.imageDialog.display;
+      },
+      set() {
+        this.$store.commit("imageDialog/close");
+      }
+    },
+    imageDialogData() {
+      return this.$store.state.imageDialog.image;
+    }
+  },
   methods: {},
   created() {
     this.selected = this.steps.length;

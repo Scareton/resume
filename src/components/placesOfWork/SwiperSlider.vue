@@ -1,7 +1,7 @@
 <template>
   <swiper ref="mySwiper" :options="swiperOptions" class="work-slider mt-2">
     <swiper-slide v-for="(slide, index) in images" :key="index">
-      <img :src="slide" class="work-slide" />
+      <img :src="slide" class="work-slide" @click="openDialog(slide)" />
       <!-- <v-img contain :src="slide" class="work-slide" /> -->
     </swiper-slide>
     <div class="swiper-pagination" slot="pagination"></div>
@@ -35,6 +35,11 @@ export default {
     swiper() {
       return this.$refs.mySwiper.$swiper;
     }
+  },
+  methods: {
+    openDialog(image) {
+      this.$store.commit("imageDialog/open", image);
+    }
   }
 };
 </script>
@@ -45,20 +50,11 @@ export default {
 }
 .work-slide {
   border-radius: 4px;
-  /* width: 100%; */
+  cursor: zoom-in;
   height: 300px;
   object-fit: contain;
 }
 .swiper-slide {
   width: auto;
-}
-@media (max-width: 599px) {
-  /* .swiper-slide {
-    max-width: 100%;
-  }
-  .work-slide {
-    max-width: 100%;
-    object-fit: cover;
-  } */
 }
 </style>
