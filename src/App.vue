@@ -35,11 +35,12 @@ export default {
     toggleDarkTheme(status) {
       localStorage.setItem("darkTheme", status);
       this.$vuetify.theme.dark = status;
-      console.log(status);
     }
   },
   created() {
-    let status = localStorage.getItem("darkTheme") == "true";
+    let status = localStorage.getItem("darkTheme");
+    if (status == undefined) status = "true";
+    status = status == "true";
     this.$vuetify.theme.dark = status;
   }
 };
