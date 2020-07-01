@@ -66,46 +66,24 @@
 
 <script>
 export default {
-  data: () => ({
-    contacts: [
-      {
-        href: "tel:+79377005739",
-        icon: "mdi-phone",
-        title: "+7 937 700 57 39",
-        subtitle: "Мобильный"
-      },
-      {
-        href: "mailto:voron4288@gmail.com",
-        icon: "mdi-email",
-        title: "voron4288@gmail.com",
-        subtitle: "E-mail",
-        append: "mdi-message-text"
-      }
-    ],
-    socials: [
-      {
-        href: "https://vk.com/id149543765",
-        icon: "mdi-vk",
-        title: "Вконтакте"
-      },
-      {
-        href: "https://github.com/Scareton",
-        icon: "mdi-github",
-        title: "Гитхаб"
-      },
-      {
-        href: "https://career.habr.com/sundear",
-        icon: "",
-        title: "Хабр Карьера"
-      }
-    ]
-  })
+  computed: {
+    contacts() {
+      return this.$store.getters["links/contacts"];
+    },
+    socials() {
+      return this.$store.getters["links/socials"];
+    }
+  },
+  created() {
+    this.$store.dispatch("links/get");
+  }
 };
 </script>
 
 <style scoped>
 .person-bar {
   min-width: 375px;
+  max-width: 375px;
   position: absolute;
   left: 16px;
 }
@@ -122,6 +100,7 @@ export default {
 @media (max-width: 959px) {
   .person-bar {
     min-width: unset;
+    max-width: unset;
     position: inherit;
     left: 0;
     margin-top: 0 !important;

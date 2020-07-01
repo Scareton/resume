@@ -4,6 +4,8 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 import imageDialog from "./imageDialog"
+import links from "./links"
+
 export default new Vuex.Store({
   state: {
   },
@@ -12,6 +14,7 @@ export default new Vuex.Store({
   actions: {
   },
   modules: {
-    imageDialog
+    imageDialog,
+    links
   }
 })
