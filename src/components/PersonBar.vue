@@ -5,7 +5,7 @@
         <v-img src="/images/photo1.jpg" aspect-ratio="1.6" position="50% 25%" />
 
         <v-list color="secondary" two-line>
-          <v-list-item v-for="(link, index) in contacts" :key="index" :href="link.href">
+          <v-list-item v-for="(link, index) in contacts" :key="index" :href="link.href" target="_blank">
             <v-list-item-icon class="contact-icon">
               <v-icon>{{link.icon}}</v-icon>
             </v-list-item-icon>
@@ -46,13 +46,13 @@
         <div class="toplinks d-flex align-center" style="flex:1;">
           <div class="d-flex flex-wrap">
             <div v-for="(link, index) in contacts" :key="`c${index}`" class="ma-1">
-              <v-btn depressed small>
+              <v-btn depressed small :href="link.href" target="_blank">
                 <v-icon class="mr-2" v-if="link.icon">{{link.icon}}</v-icon>
                 <span class="toplink-text">{{link.title}}</span>
               </v-btn>
             </div>
             <div v-for="(link, index) in socials" :key="`s${index}`" class="ma-1">
-              <v-btn depressed small>
+              <v-btn depressed small :href="link.href" target="_blank">
                 <v-icon class="mr-2" v-if="link.icon">{{link.icon}}</v-icon>
                 <span class="toplink-text">{{link.title}}</span>
               </v-btn>
