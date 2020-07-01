@@ -12,8 +12,8 @@
         <v-list-item-content>
           <v-list-item-title v-html="project.name" />
           <v-list-item-subtitle v-html="project.description" />
-          <v-list-item-subtitle class="mt-1">
-            <v-chip v-for="(tag, tagIndex) in project.tags" :key="tagIndex" small class="mr-2">{{tag}}</v-chip>
+          <v-list-item-subtitle>
+            <v-chip v-for="(tag, tagIndex) in project.tags" :key="tagIndex" small class="mr-2 mt-1">{{tag}}</v-chip>
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>

@@ -2,7 +2,7 @@
   <v-card>
     <h3 class="white--text pa-4 primary">Опыт работы</h3>
 
-    <v-stepper class="elevation-0" vertical non-linear v-model="selected">
+    <v-stepper class="elevation-0 workStepper" vertical non-linear v-model="selected">
       <template v-for="(step, index) in steps">
         <v-stepper-step :key="`step${index + 1}`" :step="index+1" @click="selected = index + 1" color="primary">
           <div class="font-weight-bold">
@@ -32,9 +32,7 @@ export default {
         name: "Studio Cube",
         image: "/images/cube.png",
         years: "",
-        projects: [
-
-        ],
+        projects: [],
         content: "Комплексные интернет-решения для вас и вашего бизнеса"
       },
       {
@@ -50,8 +48,17 @@ export default {
           },
           {
             name: "Разработка CRM системы для риелторов",
-            description: "Выгрузка объявлений с площадок. Автоматизация рутинной работы с клиентом.",
-            tags: ["Frontend", "Backend", "Vue", "Vuetify", "Vue Material", "Node", "Firebase"]
+            description:
+              "Выгрузка объявлений с площадок. Автоматизация рутинной работы с клиентом.",
+            tags: [
+              "Frontend",
+              "Backend",
+              "Vue",
+              "Vuetify",
+              "Vue Material",
+              "Node",
+              "Firebase"
+            ]
           },
           {
             name: "Объединение полигонов",
@@ -96,6 +103,10 @@ export default {
 <style>
 .v-stepper .v-stepper__step {
   cursor: pointer;
+}
+.workStepper .v-list-item__title,
+.v-list-item__subtitle {
+  white-space: normal;
 }
 @media (max-width: 424px) {
   .step-image {

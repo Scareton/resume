@@ -55,11 +55,16 @@ export default {
 }
 
 @media (max-width: 599px) {
+  .v-stepper--vertical .v-stepper__step {
+    padding: 24px 10px 16px !important;
+  }
   .v-application--is-ltr .v-stepper--vertical .v-stepper__content {
     margin: 0 !important;
-    padding: 0 16px !important;
+    padding: 0 8px !important;
   }
-  .v-application--is-ltr .theme--dark.v-stepper--vertical .v-stepper__content:not(:last-child) {
+  .v-application--is-ltr
+    .theme--dark.v-stepper--vertical
+    .v-stepper__content:not(:last-child) {
     border-left: unset !important;
   }
 }
